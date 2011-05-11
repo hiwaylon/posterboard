@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "posterboard"
   gem.homepage = "http://github.com/hiwaylon/posterboard"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Ruby API for reading posts from your Posterous account.}
+  gem.description = %Q{Ruby API for reading posts from your Posterous account.}
   gem.email = "hiwaylon@gmail.com"
   gem.authors = ["Waylon Calabrese"]
   # dependencies defined in Gemfile
