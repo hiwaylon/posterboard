@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/posterboard.rb",
     "lib/posterboard/connection.rb",
+    "posterboard.gemspec",
     "spec/posterboard/connection_spec.rb",
     "spec/spec_helper.rb"
   ]
