@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{posterboard}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Waylon Calabrese"]
-  s.date = %q{2011-05-11}
+  s.date = %q{2011-05-12}
   s.description = %q{Ruby API for reading posts from your Posterous account.}
   s.email = %q{hiwaylon@gmail.com}
   s.extra_rdoc_files = [
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/posterboard.rb",
     "lib/posterboard/connection.rb",
+    "lib/posterboard/error.rb",
     "posterboard.gemspec",
     "spec/posterboard/connection_spec.rb",
     "spec/spec_helper.rb"
