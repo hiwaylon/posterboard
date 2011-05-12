@@ -1,6 +1,6 @@
 = posterboard
 
-Ruby API for reading posts from your Posterous account.
+Ruby API for reading posts from Posterous accounts.
 
 == How To
 Install the gem
@@ -10,12 +10,19 @@ Create a connection
   connection = Posterboard::Connection.new('turkey2000', 'g0bbl3g0bbl3')
 
 Get posts by site name
-  connection.turkey_blog.each do |post|
-    title = post[:title]
-    body = post[:body]
+  posts = connection.turkey_blog
+
+Get the posts' data...
+  posts.each do |post|
+    title = post.title
+    body = post.body
   end
+  
+...and do your thing!
 
 == Future features
+* Posts by tag.
+* Posts by Date range?
 * Command line tools for retrieving API token and site id. Library interfaces accepting these constants so they are not looked up on each request.
 
 == Note

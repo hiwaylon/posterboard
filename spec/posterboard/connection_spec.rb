@@ -30,10 +30,29 @@ describe Posterboard::Connection do
 
     it "should should give access to the posts' data" do
       @connection.your_site_name.each do |post|
-        post[:title].should_not be_nil
-        post[:body].should_not be_nil
+        post.title.should_not be_nil
+        post.body.should_not be_nil
       end
     end
   end
+
+  context "when something goes wrong" do
+    it "should raise an error when requesting a site that does not exist" do
+      stub_request(:get, "http://user:pass@www.posterous.com/api/2/users/me/sites?api_token=").
+        to_return(:status => 200, 
+                  :body => [{"id" => "5432", "name" => "this_one"}, {"id" => "9876", "name" => "that_one"}])
+      
+      lambda {@connection.but_not_this}.should raise_error(Posterboard::SiteNotFoundError)
+    end
+
+    it "should raise an error when the API returns a site without an id" do
+      stub_request(:get, "http://user:pass@www.posterous.com/api/2/users/me/sites?api_token=").
+        to_return(:status => 200, 
+                  :body => [{"id" => "99", "name" => "a_good_one"}, {"name" => "bad_site", "pointless" => "parameter"}])
+      
+      lambda {@connection.bad_site}.should raise_error(Posterboard::MissingSiteIDError)
+    end
+  end
+
 end
 
