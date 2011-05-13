@@ -16,6 +16,7 @@ Get the posts' data...
   posts.each do |post|
     title = post.title
     body = post.body
+    date = post.date
   end
   
 ...and do your thing!
