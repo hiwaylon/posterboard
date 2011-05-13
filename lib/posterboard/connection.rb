@@ -1,6 +1,7 @@
 require 'httparty'
 require 'json'
 require 'logger'
+require 'time'
 
 module Posterboard
   class Connection
@@ -30,11 +31,12 @@ module Posterboard
       raise MissingSiteIDError, "Is the Posterous service broken?" unless site.key? "id"
       response = Connection.get("/users/me/sites/#{site["id"]}/posts")
       posts = []
-      ::JSON.parse(response.body).each do |body|  
+      ::JSON.parse(response.body).each do |content|  
         # => TODO: BlankSlate and define these as methods on post, i.e. post.title, or use OpenStruct
         post = OpenStruct.new
-        post.title = body['title']
-        post.body = body['body_full']
+        post.title = content['title']
+        post.body = content['body_full']
+        post.date = Time.parse(content['display_date'])
         posts << post
       end
       posts

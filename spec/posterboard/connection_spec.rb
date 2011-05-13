@@ -11,7 +11,7 @@ describe Posterboard::Connection do
                 :body => [{"id" => "1234", "name" => "your_site_name"}, {"id" => "5678", "name" => "another_site_name"}])
     stub_request(:get, "http://#{username}:#{password}@www.posterous.com/api/2/users/me/sites/1234/posts?api_token=").
       to_return(:status => 200, 
-                :body => [{:title => "ad litora", :body_full => "lorem ipsum"}, {:title => "sociosqu torquent", :body_full => "dolor set"}].to_json)
+                :body => [{:display_date => Time.now.to_s, :title => "ad litora", :body_full => "lorem ipsum"}, {:display_date => Time.now.to_s, :title => "sociosqu torquent", :body_full => "dolor set"}].to_json)
     @connection = Posterboard::Connection.new(username, password)
   end
   
@@ -32,6 +32,7 @@ describe Posterboard::Connection do
       @connection.your_site_name.each do |post|
         post.title.should_not be_nil
         post.body.should_not be_nil
+        post.date.should_not be_nil
       end
     end
   end
