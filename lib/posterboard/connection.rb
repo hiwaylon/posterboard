@@ -1,6 +1,7 @@
 require 'httparty'
 require 'json'
 require 'logger'
+require 'ostruct'
 require 'time'
 
 module Posterboard
